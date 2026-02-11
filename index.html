@@ -485,258 +485,318 @@
             color: rgba(255,255,255,0.7);
         }
 
-        /* Journey / Storytelling Phases */
-        .journey-container {
+        /* Modern Vertical Scroll Phases */
+        .phases-section {
+            background: linear-gradient(180deg, var(--color-highlight) 0%, #0f172a 100%);
+            padding: 120px 0;
+        }
+
+        .phases-section .section-tag {
+            background: rgba(255,255,255,0.1);
+            color: #ffffff;
+        }
+
+        .phases-section .section-title {
+            color: #ffffff;
+        }
+
+        .phases-section .section-desc {
+            color: rgba(255,255,255,0.7);
+        }
+
+        .phases-container {
             position: relative;
-            max-width: 1000px;
+            max-width: 900px;
             margin: 0 auto;
         }
 
-        .journey-line {
+        /* Progress Line */
+        .progress-line {
             position: absolute;
-            left: 50%;
+            left: 32px;
             top: 0;
             bottom: 0;
-            width: 4px;
-            background: linear-gradient(180deg, var(--color-accent) 0%, #a78bfa 50%, #818cf8 100%);
-            transform: translateX(-50%);
-            border-radius: 2px;
+            width: 2px;
+            background: rgba(255,255,255,0.1);
         }
 
-        .journey-phase {
-            display: flex;
-            align-items: stretch;
-            margin-bottom: 80px;
-            position: relative;
-        }
-
-        .journey-phase:last-child {
-            margin-bottom: 0;
-        }
-
-        .journey-phase:nth-child(even) {
-            flex-direction: row-reverse;
-        }
-
-        .journey-phase:nth-child(even) .phase-card {
-            margin-left: 0;
-            margin-right: 60px;
-        }
-
-        .journey-phase:nth-child(odd) .phase-card {
-            margin-right: 0;
-            margin-left: 60px;
-        }
-
-        .phase-marker {
+        .progress-line-fill {
             position: absolute;
-            left: 50%;
-            top: 40px;
-            transform: translateX(-50%);
-            z-index: 10;
+            left: 32px;
+            top: 0;
+            width: 2px;
+            height: 0;
+            background: linear-gradient(180deg, #818cf8 0%, #a78bfa 50%, #c084fc 100%);
+            transition: height 0.1s linear;
         }
 
+        /* Phase Block */
+        .phase-block {
+            position: relative;
+            padding-left: 80px;
+            padding-bottom: 80px;
+            opacity: 0.3;
+            transform: translateX(-20px);
+            transition: all 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+
+        .phase-block:last-child {
+            padding-bottom: 0;
+        }
+
+        .phase-block.active {
+            opacity: 1;
+            transform: translateX(0);
+        }
+
+        /* Phase Number */
         .phase-number {
-            width: 72px;
-            height: 72px;
-            background: linear-gradient(135deg, var(--color-accent) 0%, var(--color-accent-dark) 100%);
+            position: absolute;
+            left: 12px;
+            top: 0;
+            width: 42px;
+            height: 42px;
+            background: rgba(255,255,255,0.1);
+            border: 2px solid rgba(255,255,255,0.2);
             border-radius: 50%;
             display: flex;
             align-items: center;
             justify-content: center;
-            font-size: 28px;
-            font-weight: 800;
-            color: #ffffff;
-            box-shadow: 0 8px 32px rgba(99, 91, 255, 0.4);
-            border: 4px solid #ffffff;
-        }
-
-        .phase-card {
-            flex: 1;
-            max-width: calc(50% - 60px);
-            background: var(--color-surface);
-            border-radius: var(--radius-xl);
-            padding: 40px;
-            box-shadow: var(--shadow-lg);
-            border: 1px solid var(--color-border);
+            font-size: 16px;
+            font-weight: 700;
+            color: rgba(255,255,255,0.5);
             transition: all 0.4s ease;
-            position: relative;
-            overflow: hidden;
         }
 
-        .phase-card::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            height: 4px;
-            background: linear-gradient(90deg, var(--color-accent) 0%, #a78bfa 100%);
+        .phase-block.active .phase-number {
+            background: linear-gradient(135deg, #818cf8 0%, #a78bfa 100%);
+            border-color: transparent;
+            color: #ffffff;
+            box-shadow: 0 0 30px rgba(129, 140, 248, 0.5);
+            transform: scale(1.1);
         }
 
-        .phase-card:hover {
-            transform: translateY(-8px);
-            box-shadow: var(--shadow-xl);
+        /* Phase Header */
+        .phase-header {
+            margin-bottom: 32px;
         }
 
-        .phase-icon {
-            width: 64px;
-            height: 64px;
-            background: var(--color-accent-light);
-            border-radius: var(--radius-md);
-            display: flex;
+        .phase-eyebrow {
+            display: inline-flex;
             align-items: center;
-            justify-content: center;
-            font-size: 32px;
-            margin-bottom: 24px;
+            gap: 8px;
+            font-size: 13px;
+            font-weight: 600;
+            color: #a78bfa;
+            text-transform: uppercase;
+            letter-spacing: 0.15em;
+            margin-bottom: 16px;
         }
 
-        .phase-tag {
-            display: inline-block;
-            background: var(--color-accent-light);
-            color: var(--color-accent);
-            padding: 4px 12px;
-            border-radius: 50px;
-            font-size: 11px;
-            font-weight: 600;
-            text-transform: uppercase;
-            letter-spacing: 0.1em;
-            margin-bottom: 12px;
+        .phase-eyebrow-icon {
+            font-size: 16px;
         }
 
         .phase-title {
-            font-size: 24px;
-            font-weight: 700;
-            color: var(--color-highlight);
-            margin-bottom: 8px;
-            line-height: 1.3;
+            font-size: 36px;
+            font-weight: 800;
+            color: #ffffff;
+            line-height: 1.2;
+            margin-bottom: 12px;
+            letter-spacing: -0.02em;
         }
 
         .phase-subtitle {
-            font-size: 15px;
-            color: var(--color-text-muted);
-            margin-bottom: 20px;
+            font-size: 18px;
+            color: rgba(255,255,255,0.6);
+            line-height: 1.6;
+            max-width: 600px;
+        }
+
+        /* Phase Content */
+        .phase-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 32px;
+            margin-bottom: 32px;
         }
 
         .phase-narrative {
-            font-size: 16px;
-            color: var(--color-text-secondary);
-            line-height: 1.8;
-            margin-bottom: 28px;
-            padding-bottom: 24px;
-            border-bottom: 1px solid var(--color-border);
+            grid-column: 1 / -1;
+            font-size: 17px;
+            color: rgba(255,255,255,0.8);
+            line-height: 1.9;
+            padding: 28px 32px;
+            background: rgba(255,255,255,0.03);
+            border-radius: 16px;
+            border-left: 3px solid #818cf8;
         }
 
-        .phase-highlights {
-            display: grid;
-            grid-template-columns: repeat(2, 1fr);
-            gap: 16px;
-            margin-bottom: 28px;
+        /* Activities */
+        .phase-activities {
+            background: rgba(255,255,255,0.05);
+            border-radius: 16px;
+            padding: 28px;
+            backdrop-filter: blur(10px);
         }
 
-        .phase-highlight-item {
+        .phase-activities-title {
+            font-size: 11px;
+            font-weight: 700;
+            color: #a78bfa;
+            text-transform: uppercase;
+            letter-spacing: 0.15em;
+            margin-bottom: 20px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .phase-activities-title::before {
+            content: '';
+            width: 8px;
+            height: 8px;
+            background: #818cf8;
+            border-radius: 2px;
+        }
+
+        .activity-item {
             display: flex;
             align-items: flex-start;
-            gap: 12px;
+            gap: 14px;
+            padding: 14px 0;
+            border-bottom: 1px solid rgba(255,255,255,0.06);
         }
 
-        .phase-highlight-icon {
-            width: 36px;
-            height: 36px;
-            background: var(--color-bg);
-            border-radius: 8px;
+        .activity-item:last-child {
+            border-bottom: none;
+            padding-bottom: 0;
+        }
+
+        .activity-icon {
+            width: 38px;
+            height: 38px;
+            background: rgba(129, 140, 248, 0.15);
+            border-radius: 10px;
             display: flex;
             align-items: center;
             justify-content: center;
-            font-size: 16px;
+            font-size: 18px;
             flex-shrink: 0;
         }
 
-        .phase-highlight-text {
-            font-size: 14px;
-            color: var(--color-text-secondary);
+        .activity-text {
+            flex: 1;
+        }
+
+        .activity-text strong {
+            display: block;
+            color: #ffffff;
+            font-weight: 600;
+            font-size: 15px;
+            margin-bottom: 4px;
+        }
+
+        .activity-text span {
+            color: rgba(255,255,255,0.5);
+            font-size: 13px;
             line-height: 1.5;
         }
 
-        .phase-highlight-text strong {
-            display: block;
-            color: var(--color-text-primary);
-            font-weight: 600;
-            margin-bottom: 2px;
-        }
-
-        .phase-deliverables-box {
-            background: var(--color-bg);
-            border-radius: var(--radius-md);
-            padding: 20px;
+        /* Deliverables */
+        .phase-deliverables {
+            background: linear-gradient(135deg, rgba(129, 140, 248, 0.1) 0%, rgba(167, 139, 250, 0.1) 100%);
+            border-radius: 16px;
+            padding: 28px;
+            border: 1px solid rgba(129, 140, 248, 0.2);
         }
 
         .phase-deliverables-title {
-            font-size: 12px;
-            font-weight: 600;
-            color: var(--color-text-muted);
+            font-size: 11px;
+            font-weight: 700;
+            color: #c084fc;
             text-transform: uppercase;
-            letter-spacing: 0.1em;
-            margin-bottom: 12px;
+            letter-spacing: 0.15em;
+            margin-bottom: 20px;
             display: flex;
             align-items: center;
             gap: 8px;
         }
 
-        .phase-deliverables-title svg {
-            width: 16px;
-            height: 16px;
-            color: var(--color-accent);
+        .phase-deliverables-title::before {
+            content: '';
+            width: 8px;
+            height: 8px;
+            background: #c084fc;
+            border-radius: 2px;
         }
 
-        .phase-deliverables-list {
+        .deliverable-item {
             display: flex;
-            flex-wrap: wrap;
-            gap: 8px;
-        }
-
-        .phase-deliverable-tag {
-            background: var(--color-surface);
-            border: 1px solid var(--color-border);
-            padding: 6px 12px;
-            border-radius: 6px;
-            font-size: 13px;
-            color: var(--color-text-primary);
+            align-items: center;
+            gap: 12px;
+            padding: 12px 0;
+            color: rgba(255,255,255,0.9);
+            font-size: 14px;
             font-weight: 500;
         }
 
-        /* Mobile Journey */
-        @media (max-width: 992px) {
-            .journey-line {
-                left: 24px;
+        .deliverable-item::before {
+            content: '→';
+            color: #a78bfa;
+            font-weight: 700;
+        }
+
+        /* Phase Divider */
+        .phase-divider {
+            height: 1px;
+            background: linear-gradient(90deg, transparent 0%, rgba(255,255,255,0.1) 50%, transparent 100%);
+            margin: 0 0 80px 80px;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .phases-section {
+                padding: 80px 0;
             }
 
-            .journey-phase,
-            .journey-phase:nth-child(even) {
-                flex-direction: column;
-                padding-left: 70px;
+            .phase-block {
+                padding-left: 60px;
+                padding-bottom: 60px;
             }
 
-            .phase-marker {
-                left: 24px;
-                top: 0;
+            .progress-line,
+            .progress-line-fill {
+                left: 20px;
             }
 
             .phase-number {
-                width: 48px;
-                height: 48px;
-                font-size: 20px;
+                left: 0;
+                width: 38px;
+                height: 38px;
+                font-size: 14px;
             }
 
-            .phase-card,
-            .journey-phase:nth-child(even) .phase-card,
-            .journey-phase:nth-child(odd) .phase-card {
-                max-width: 100%;
-                margin: 0;
+            .phase-title {
+                font-size: 26px;
             }
 
-            .phase-highlights {
+            .phase-subtitle {
+                font-size: 16px;
+            }
+
+            .phase-content {
                 grid-template-columns: 1fr;
+            }
+
+            .phase-narrative {
+                font-size: 15px;
+                padding: 20px 24px;
+            }
+
+            .phase-divider {
+                margin-left: 60px;
+                margin-bottom: 60px;
             }
         }
 
@@ -1218,10 +1278,6 @@
                 font-size: 28px;
             }
 
-            .phase-card {
-                padding: 32px 24px;
-            }
-
             .pricing-total-value {
                 font-size: 48px;
             }
@@ -1265,15 +1321,6 @@
 
             .section {
                 padding: 60px 0;
-            }
-
-            .phase-tabs {
-                gap: 6px;
-            }
-
-            .phase-tab {
-                padding: 10px 16px;
-                font-size: 13px;
             }
 
             .whatsapp-tooltip {
@@ -1422,197 +1469,211 @@
         </div>
     </section>
 
-    <!-- Phases Section - Journey Storytelling -->
-    <section class="section phases-section" id="fases">
+    <!-- Phases Section - Modern Vertical Scroll -->
+    <section class="phases-section" id="fases">
         <div class="container">
             <div class="section-header">
                 <span class="section-tag">El Proceso</span>
-                <h2 class="section-title">Tu Camino Hacia un ERP Moderno</h2>
-                <p class="section-desc">Un proceso estratégico diseñado para transformar tu sistema sin disrupciones, con resultados visibles en cada etapa.</p>
+                <h2 class="section-title">Cómo Transformamos Tu ERP</h2>
+                <p class="section-desc">Un proceso estratégico en 3 fases, diseñado para resultados visibles sin disrupciones.</p>
             </div>
 
-            <div class="journey-container">
-                <div class="journey-line"></div>
+            <div class="phases-container">
+                <div class="progress-line"></div>
+                <div class="progress-line-fill" id="progressFill"></div>
 
                 <!-- Phase 1 -->
-                <div class="journey-phase">
-                    <div class="phase-marker">
-                        <div class="phase-number">1</div>
+                <div class="phase-block" data-phase="1">
+                    <div class="phase-number">1</div>
+                    
+                    <div class="phase-header">
+                        <div class="phase-eyebrow">
+                            <span class="phase-eyebrow-icon">🔬</span>
+                            Mes 1 — Fundamentos
+                        </div>
+                        <h3 class="phase-title">Descubrimiento<br>y Estrategia Visual</h3>
+                        <p class="phase-subtitle">Antes de diseñar un solo pixel, necesitamos entender profundamente tu producto y definir la dirección correcta.</p>
                     </div>
-                    <div class="phase-card">
-                        <div class="phase-icon">🔬</div>
-                        <span class="phase-tag">Mes 1</span>
-                        <h3 class="phase-title">Descubrimiento y Estrategia Visual</h3>
-                        <p class="phase-subtitle">Construimos los cimientos de tu nueva identidad</p>
-                        
+
+                    <div class="phase-content">
                         <p class="phase-narrative">
-                            Antes de diseñar un solo pixel, necesitamos entender profundamente tu producto. Analizamos cada pantalla, identificamos patrones, estudiamos a tu competencia y definimos una dirección visual que eleve la percepción de valor de tu ERP.
+                            Analizamos cada pantalla de tu ERP, identificamos patrones visuales, estudiamos a tu competencia directa y definimos una dirección visual que eleve la percepción de valor de tu producto ante tus clientes.
                         </p>
 
-                        <div class="phase-highlights">
-                            <div class="phase-highlight-item">
-                                <div class="phase-highlight-icon">🔍</div>
-                                <div class="phase-highlight-text">
+                        <div class="phase-activities">
+                            <div class="phase-activities-title">Qué Hacemos</div>
+                            
+                            <div class="activity-item">
+                                <div class="activity-icon">🔍</div>
+                                <div class="activity-text">
                                     <strong>Auditoría UI Profunda</strong>
-                                    Consistencia, jerarquía y accesibilidad
+                                    <span>Análisis de consistencia, jerarquía visual y accesibilidad en todo el sistema</span>
                                 </div>
                             </div>
-                            <div class="phase-highlight-item">
-                                <div class="phase-highlight-icon">📊</div>
-                                <div class="phase-highlight-text">
-                                    <strong>Benchmark Competitivo</strong>
-                                    ERPs modernos y SaaS líderes
+                            
+                            <div class="activity-item">
+                                <div class="activity-icon">📊</div>
+                                <div class="activity-text">
+                                    <strong>Benchmark de Mercado</strong>
+                                    <span>Estudio de ERPs modernos y SaaS B2B líderes para identificar mejores prácticas</span>
                                 </div>
                             </div>
-                            <div class="phase-highlight-item">
-                                <div class="phase-highlight-icon">🎨</div>
-                                <div class="phase-highlight-text">
+                            
+                            <div class="activity-item">
+                                <div class="activity-icon">🎨</div>
+                                <div class="activity-text">
                                     <strong>Exploración Creativa</strong>
-                                    2-3 propuestas de estilo visual
+                                    <span>Desarrollo de 2-3 propuestas de estilo visual para validación contigo</span>
                                 </div>
                             </div>
-                            <div class="phase-highlight-item">
-                                <div class="phase-highlight-icon">📐</div>
-                                <div class="phase-highlight-text">
+                            
+                            <div class="activity-item">
+                                <div class="activity-icon">📐</div>
+                                <div class="activity-text">
                                     <strong>Design System Base</strong>
-                                    Colores, tipografía, componentes
+                                    <span>Creación del sistema de colores, tipografía, espaciado y componentes core</span>
                                 </div>
                             </div>
                         </div>
 
-                        <div class="phase-deliverables-box">
-                            <div class="phase-deliverables-title">
-                                <svg fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
-                                Entregables
-                            </div>
-                            <div class="phase-deliverables-list">
-                                <span class="phase-deliverable-tag">Figma estructurado</span>
-                                <span class="phase-deliverable-tag">Lineamientos visuales</span>
-                                <span class="phase-deliverable-tag">Benchmark resumido</span>
-                                <span class="phase-deliverable-tag">Mockups Dashboard</span>
-                                <span class="phase-deliverable-tag">Componentes base</span>
-                            </div>
+                        <div class="phase-deliverables">
+                            <div class="phase-deliverables-title">Lo Que Recibes</div>
+                            <div class="deliverable-item">Archivo Figma estructurado</div>
+                            <div class="deliverable-item">Documento de lineamientos visuales</div>
+                            <div class="deliverable-item">Benchmark resumido</div>
+                            <div class="deliverable-item">Mockups de pantallas core</div>
+                            <div class="deliverable-item">Componentes base reutilizables</div>
                         </div>
                     </div>
                 </div>
+
+                <div class="phase-divider"></div>
 
                 <!-- Phase 2 -->
-                <div class="journey-phase">
-                    <div class="phase-marker">
-                        <div class="phase-number">2</div>
+                <div class="phase-block" data-phase="2">
+                    <div class="phase-number">2</div>
+                    
+                    <div class="phase-header">
+                        <div class="phase-eyebrow">
+                            <span class="phase-eyebrow-icon">⚡</span>
+                            Mes 2 — Ejecución
+                        </div>
+                        <h3 class="phase-title">Transformación<br>Módulo a Módulo</h3>
+                        <p class="phase-subtitle">Tu ERP cobra vida con el nuevo diseño. Cada módulo rediseñado con atención al detalle.</p>
                     </div>
-                    <div class="phase-card">
-                        <div class="phase-icon">⚡</div>
-                        <span class="phase-tag">Mes 2</span>
-                        <h3 class="phase-title">Transformación Módulo a Módulo</h3>
-                        <p class="phase-subtitle">Tu ERP cobra vida con el nuevo diseño</p>
-                        
+
+                    <div class="phase-content">
                         <p class="phase-narrative">
-                            Con el sistema de diseño aprobado, comenzamos la transformación real. Cada módulo es rediseñado con atención al detalle: formularios que fluyen naturalmente, tablas que respiran, estados que comunican claramente. Trabajamos contigo en cada iteración.
+                            Con el Design System aprobado, comenzamos la transformación real. Formularios que fluyen naturalmente, tablas que respiran, estados que comunican claramente. Trabajamos contigo en cada iteración para asegurar que el resultado refleje tu visión.
                         </p>
 
-                        <div class="phase-highlights">
-                            <div class="phase-highlight-item">
-                                <div class="phase-highlight-icon">🧩</div>
-                                <div class="phase-highlight-text">
-                                    <strong>Rediseño por Módulo</strong>
-                                    Aplicación sistemática del Design System
+                        <div class="phase-activities">
+                            <div class="phase-activities-title">Qué Hacemos</div>
+                            
+                            <div class="activity-item">
+                                <div class="activity-icon">🧩</div>
+                                <div class="activity-text">
+                                    <strong>Rediseño Progresivo</strong>
+                                    <span>Aplicación sistemática del Design System módulo por módulo</span>
                                 </div>
                             </div>
-                            <div class="phase-highlight-item">
-                                <div class="phase-highlight-icon">📝</div>
-                                <div class="phase-highlight-text">
+                            
+                            <div class="activity-item">
+                                <div class="activity-icon">📝</div>
+                                <div class="activity-text">
                                     <strong>Formularios Optimizados</strong>
-                                    Flujos claros y eficientes
+                                    <span>Flujos de entrada de datos claros, eficientes y libres de fricción</span>
                                 </div>
                             </div>
-                            <div class="phase-highlight-item">
-                                <div class="phase-highlight-icon">📋</div>
-                                <div class="phase-highlight-text">
+                            
+                            <div class="activity-item">
+                                <div class="activity-icon">📋</div>
+                                <div class="activity-text">
                                     <strong>Tablas Inteligentes</strong>
-                                    Densidad visual optimizada
+                                    <span>Optimización de densidad visual para datos complejos</span>
                                 </div>
                             </div>
-                            <div class="phase-highlight-item">
-                                <div class="phase-highlight-icon">🔄</div>
-                                <div class="phase-highlight-text">
+                            
+                            <div class="activity-item">
+                                <div class="activity-icon">🔄</div>
+                                <div class="activity-text">
                                     <strong>Iteración Continua</strong>
-                                    Tu feedback integrado al proceso
+                                    <span>Tu feedback integrado al proceso en cada entrega</span>
                                 </div>
                             </div>
                         </div>
 
-                        <div class="phase-deliverables-box">
-                            <div class="phase-deliverables-title">
-                                <svg fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
-                                Entregables
-                            </div>
-                            <div class="phase-deliverables-list">
-                                <span class="phase-deliverable-tag">Mockups por módulo</span>
-                                <span class="phase-deliverable-tag">Prototipos navegables</span>
-                                <span class="phase-deliverable-tag">Documentación técnica</span>
-                            </div>
+                        <div class="phase-deliverables">
+                            <div class="phase-deliverables-title">Lo Que Recibes</div>
+                            <div class="deliverable-item">Mockups finales por módulo</div>
+                            <div class="deliverable-item">Prototipos navegables</div>
+                            <div class="deliverable-item">Documentación para desarrollo</div>
                         </div>
                     </div>
                 </div>
 
+                <div class="phase-divider"></div>
+
                 <!-- Phase 3 -->
-                <div class="journey-phase">
-                    <div class="phase-marker">
-                        <div class="phase-number">3</div>
+                <div class="phase-block" data-phase="3">
+                    <div class="phase-number">3</div>
+                    
+                    <div class="phase-header">
+                        <div class="phase-eyebrow">
+                            <span class="phase-eyebrow-icon">🚀</span>
+                            Mes 3 — Consolidación
+                        </div>
+                        <h3 class="phase-title">Lanzamiento<br>y Escalabilidad</h3>
+                        <p class="phase-subtitle">El toque final. Un sistema listo para crecer y evolucionar con tu negocio.</p>
                     </div>
-                    <div class="phase-card">
-                        <div class="phase-icon">🚀</div>
-                        <span class="phase-tag">Mes 3</span>
-                        <h3 class="phase-title">Lanzamiento y Escalabilidad</h3>
-                        <p class="phase-subtitle">Un sistema listo para crecer</p>
-                        
+
+                    <div class="phase-content">
                         <p class="phase-narrative">
-                            El toque final: tu ERP funcionando perfectamente en cualquier dispositivo. Consolidamos todo el trabajo, pulimos cada detalle y te entregamos no solo un diseño, sino un sistema completo y documentado que tu equipo podrá mantener y evolucionar.
+                            Tu ERP funcionando perfectamente en cualquier dispositivo. Consolidamos todo el trabajo, pulimos cada detalle y te entregamos no solo un diseño, sino un sistema completo y documentado que tu equipo podrá mantener y evolucionar durante años.
                         </p>
 
-                        <div class="phase-highlights">
-                            <div class="phase-highlight-item">
-                                <div class="phase-highlight-icon">📱</div>
-                                <div class="phase-highlight-text">
-                                    <strong>100% Responsive</strong>
-                                    Desktop, Tablet y Mobile
+                        <div class="phase-activities">
+                            <div class="phase-activities-title">Qué Hacemos</div>
+                            
+                            <div class="activity-item">
+                                <div class="activity-icon">📱</div>
+                                <div class="activity-text">
+                                    <strong>Adaptación Responsive</strong>
+                                    <span>Diseño optimizado para Desktop, Tablet y Mobile</span>
                                 </div>
                             </div>
-                            <div class="phase-highlight-item">
-                                <div class="phase-highlight-icon">✨</div>
-                                <div class="phase-highlight-text">
+                            
+                            <div class="activity-item">
+                                <div class="activity-icon">✨</div>
+                                <div class="activity-text">
                                     <strong>Pulido Final</strong>
-                                    Consistencia en cada detalle
+                                    <span>Ajustes de consistencia y microinteracciones</span>
                                 </div>
                             </div>
-                            <div class="phase-highlight-item">
-                                <div class="phase-highlight-icon">📚</div>
-                                <div class="phase-highlight-text">
+                            
+                            <div class="activity-item">
+                                <div class="activity-icon">📚</div>
+                                <div class="activity-text">
                                     <strong>Documentación Completa</strong>
-                                    Guía para tu equipo técnico
+                                    <span>Guía detallada para tu equipo de desarrollo</span>
                                 </div>
                             </div>
-                            <div class="phase-highlight-item">
-                                <div class="phase-highlight-icon">🎁</div>
-                                <div class="phase-highlight-text">
+                            
+                            <div class="activity-item">
+                                <div class="activity-icon">🎁</div>
+                                <div class="activity-text">
                                     <strong>Design System Final</strong>
-                                    Listo para escalar
+                                    <span>Sistema escalable listo para futuras evoluciones</span>
                                 </div>
                             </div>
                         </div>
 
-                        <div class="phase-deliverables-box">
-                            <div class="phase-deliverables-title">
-                                <svg fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
-                                Entregables
-                            </div>
-                            <div class="phase-deliverables-list">
-                                <span class="phase-deliverable-tag">Sistema visual completo</span>
-                                <span class="phase-deliverable-tag">Variantes responsive</span>
-                                <span class="phase-deliverable-tag">Guía técnica</span>
-                                <span class="phase-deliverable-tag">Figma organizado</span>
-                            </div>
+                        <div class="phase-deliverables">
+                            <div class="phase-deliverables-title">Lo Que Recibes</div>
+                            <div class="deliverable-item">Sistema visual completo</div>
+                            <div class="deliverable-item">Variantes responsive</div>
+                            <div class="deliverable-item">Guía técnica detallada</div>
+                            <div class="deliverable-item">Figma final organizado</div>
                         </div>
                     </div>
                 </div>
@@ -1822,7 +1883,47 @@
             });
         });
 
-        // Intersection Observer for animations
+        // Phase blocks scroll animation
+        const phaseBlocks = document.querySelectorAll('.phase-block');
+        const progressFill = document.getElementById('progressFill');
+        const phasesContainer = document.querySelector('.phases-container');
+
+        const phaseObserver = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('active');
+                }
+            });
+        }, {
+            threshold: 0.2,
+            rootMargin: '-100px 0px -100px 0px'
+        });
+
+        phaseBlocks.forEach(block => {
+            phaseObserver.observe(block);
+        });
+
+        // Progress line fill on scroll
+        window.addEventListener('scroll', () => {
+            if (phasesContainer) {
+                const containerRect = phasesContainer.getBoundingClientRect();
+                const containerTop = containerRect.top;
+                const containerHeight = containerRect.height;
+                const windowHeight = window.innerHeight;
+                
+                // Calculate progress
+                let progress = 0;
+                if (containerTop < windowHeight * 0.5) {
+                    progress = Math.min(1, Math.abs(containerTop - windowHeight * 0.5) / (containerHeight - windowHeight * 0.3));
+                }
+                
+                if (progressFill) {
+                    progressFill.style.height = (progress * 100) + '%';
+                }
+            }
+        });
+
+        // Intersection Observer for other animations
         const observerOptions = {
             threshold: 0.1,
             rootMargin: '0px 0px -50px 0px'
